@@ -116,6 +116,54 @@ let Game = new Vue({
 			for (let i = 0; i < startTiles; i++) {
 				this.addRandomTile()
 			}
+		},
+
+		continueGame: function(data) {
+			let arr, conf
+
+			conf = this.conf
+			this.initArrayGrid(conf.size)
+			arr = this.grid
+			this.tiles = data
+
+			data.forEach(function(item) {
+				arr[item.x][item.y] = 1
+			})
+		},
+
+		gameOver: function() {
+			this.message()
+		},
+
+		initArrayGrid: function(size) {
+			let arr = []
+
+			for (let x = 0; x < size; x++) {
+				arr[x] = []
+				for (let y = 0; y < size; y++) {
+					arr[x][y] = 0
+				}
+			}
+
+			this.grid = arr
+		},
+
+		changesTilesSize: function(e) {
+			e.preventDefault()
+			this.conf.size = parseInt(e.target.value)
+
+			if(document.activeElement)
+				document.activeElement.blur()
+
+			this.init()
+		},
+
+		changesStrategy: function(e) {
+			e.preventDefault()
+			this.strategy = e.target.value
+
+			if(document.activeElement)
+				document.activeElement.blur()
 
 			if ( this.strategy === 'manual' ) {
 				window.clearTimeout(this.strategyTimeoutID)
@@ -169,56 +217,6 @@ let Game = new Vue({
 				}
 				window.setTimeout(move, 0, 0)
 			}
-		},
-
-		continueGame: function(data) {
-			let arr, conf
-
-			conf = this.conf
-			this.initArrayGrid(conf.size)
-			arr = this.grid
-			this.tiles = data
-
-			data.forEach(function(item) {
-				arr[item.x][item.y] = 1
-			})
-		},
-
-		gameOver: function() {
-			this.message()
-		},
-
-		initArrayGrid: function(size) {
-			let arr = []
-
-			for (let x = 0; x < size; x++) {
-				arr[x] = []
-				for (let y = 0; y < size; y++) {
-					arr[x][y] = 0
-				}
-			}
-
-			this.grid = arr
-		},
-
-		changesTilesSize: function(e) {
-			e.preventDefault()
-			this.conf.size = parseInt(e.target.value)
-
-			if(document.activeElement)
-				document.activeElement.blur()
-
-			this.init()
-		},
-
-		changesStrategy: function(e) {
-			e.preventDefault()
-			this.strategy = e.target.value
-
-			if(document.activeElement)
-				document.activeElement.blur()
-
-			this.init()
 		},
 
 		addRandomTile: function() {
