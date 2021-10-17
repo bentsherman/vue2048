@@ -1,10 +1,15 @@
 <!doctype html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
+	<meta charset="utf-8">
 	<title>2048 Game</title>
 
-	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link href="style/main.css" rel="stylesheet" type="text/css">
+	<link rel="shortcut icon" href="favicon.ico">
+
+	<meta name="HandheldFriendly" content="True">
+	<meta name="MobileOptimized" content="320">
+	<meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0, maximum-scale=1, user-scalable=no, minimal-ui">
 </head>
 <body>
 	<div class="container" id="mainVue" v-cloak>
@@ -17,7 +22,7 @@
 		</div>
 
 		<div class="above-game">
-			<p class="game-intro">Join the numbers and get to the <strong>2048 tile!</strong></p>
+			<p class="game-intro">Join the tiles, get to <strong>2048!</strong></p>
 			<a class="restart-button" v-on="click: init">New Game</a>
 
 			<label class='left' for="noTiles">Select the number of tiles</label>
