@@ -1,20 +1,13 @@
 vue2048
 =======
 
-
 The 2048 game in Vue.js
 
+This is based on 2048 by [Gabriele Cirulli], and it uses some code from [his repos] about the keybinding, touch events, and the css styling.
 
-This is based on 2048 by [Gabriele Cirulli],
-and it uses some code from [his repos] about the keybinding, touch events, and the css styling.
-
-
-The main functionality is written using Vue.js,
-a very flexible MVVM library.
-
+The main functionality is written using Vue.js, a very flexible MVVM library.
 
 This is inspired from the following [ng-newsletter article]
-
 
 You can play the [game here].
 
