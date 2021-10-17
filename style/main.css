@@ -177,7 +177,7 @@ hr {
       font-weight: bold;
       height: 60px;
       line-height: 60px;
-      margin-top: 163px; }
+      margin-top: 222px; }
     .game-container .game-message .lower {
       display: block;
       margin-top: 59px; }
@@ -231,7 +231,7 @@ hr {
 .tile, .tile .tile-inner {
   width: 107px;
   height: 107px;
-  line-height: 116.25px; }
+  line-height: 107px; }
 
 .tile {
   position: absolute;
@@ -319,36 +319,42 @@ hr {
     opacity: 0;
     -webkit-transform: scale(0);
     -moz-transform: scale(0);
+    -ms-transform: scale(0);
     transform: scale(0); }
 
   100% {
     opacity: 1;
     -webkit-transform: scale(1);
     -moz-transform: scale(1);
+    -ms-transform: scale(1);
     transform: scale(1); } }
 @-moz-keyframes appear {
   0% {
     opacity: 0;
     -webkit-transform: scale(0);
     -moz-transform: scale(0);
+    -ms-transform: scale(0);
     transform: scale(0); }
 
   100% {
     opacity: 1;
     -webkit-transform: scale(1);
     -moz-transform: scale(1);
+    -ms-transform: scale(1);
     transform: scale(1); } }
 @keyframes appear {
   0% {
     opacity: 0;
     -webkit-transform: scale(0);
     -moz-transform: scale(0);
+    -ms-transform: scale(0);
     transform: scale(0); }
 
   100% {
     opacity: 1;
     -webkit-transform: scale(1);
     -moz-transform: scale(1);
+    -ms-transform: scale(1);
     transform: scale(1); } }
 .tile-new .tile-inner {
   -webkit-animation: appear 200ms ease 100ms;
@@ -362,46 +368,55 @@ hr {
   0% {
     -webkit-transform: scale(0);
     -moz-transform: scale(0);
+    -ms-transform: scale(0);
     transform: scale(0); }
 
   50% {
     -webkit-transform: scale(1.2);
     -moz-transform: scale(1.2);
+    -ms-transform: scale(1.2);
     transform: scale(1.2); }
 
   100% {
     -webkit-transform: scale(1);
     -moz-transform: scale(1);
+    -ms-transform: scale(1);
     transform: scale(1); } }
 @-moz-keyframes pop {
   0% {
     -webkit-transform: scale(0);
     -moz-transform: scale(0);
+    -ms-transform: scale(0);
     transform: scale(0); }
 
   50% {
     -webkit-transform: scale(1.2);
     -moz-transform: scale(1.2);
+    -ms-transform: scale(1.2);
     transform: scale(1.2); }
 
   100% {
     -webkit-transform: scale(1);
     -moz-transform: scale(1);
+    -ms-transform: scale(1);
     transform: scale(1); } }
 @keyframes pop {
   0% {
     -webkit-transform: scale(0);
     -moz-transform: scale(0);
+    -ms-transform: scale(0);
     transform: scale(0); }
 
   50% {
     -webkit-transform: scale(1.2);
     -moz-transform: scale(1.2);
+    -ms-transform: scale(1.2);
     transform: scale(1.2); }
 
   100% {
     -webkit-transform: scale(1);
     -moz-transform: scale(1);
+    -ms-transform: scale(1);
     transform: scale(1); } }
 .tile-merged .tile-inner {
   z-index: 20;
@@ -569,7 +584,7 @@ hr {
   .tile, .tile .tile-inner {
     width: 58px;
     height: 58px;
-    line-height: 67.5px; }
+    line-height: 58px; }
 
   .tile .tile-inner {
     font-size: 35px; }
@@ -595,14 +610,13 @@ select {
     color:#fff;
     border:none;
     outline:none;
-    display: inline-block;
     -webkit-appearance:none;
     -moz-appearance:none;
     appearance:none;
     cursor:pointer;
     float:left;
 }
-.left{
+.left {
   clear: both;
   float: left;
   font-size: 17px;

@@ -25,7 +25,7 @@
 			<p class="game-intro">Join the tiles, get to <strong>2048!</strong></p>
 			<a class="restart-button" v-on="click: init">New Game</a>
 
-			<label class='left' for="noTiles">Select the number of tiles</label>
+			<label class="left" for="noTiles">Select the number of tiles</label>
 			<select v-on="change: changesTilesSize" v-selected="conf.size">
 				<option value="3">3 tiles</option>
 				<option value="4">4 tiles</option>
@@ -34,7 +34,7 @@
 				<option value="8">8 tiles</option>
 			</select>
 
-			<label class='left' for="strategy">Select the AI strategy</label>
+			<label class="left" for="strategy">Select the AI strategy</label>
 			<select v-on="change: changesStrategy">
 				<option value="manual">None (manual)</option>
 				<option value="vortex">Vortex</option>
@@ -66,7 +66,7 @@
 		</div>
 
 		<p class="game-explanation">
-			<strong class="important">How to play:</strong> Use your <strong>arrow keys</strong> to move the tiles. When two tiles with the same number touch, they <strong>merge into one!</strong>
+			<strong class="important">How to play:</strong> Use your <strong>arrow keys</strong> to move the tiles. Tiles with the same number <strong>merge into one</strong> when they touch. Add them up to reach <strong>2048!</strong>
 		</p>
 
 		<hr>
