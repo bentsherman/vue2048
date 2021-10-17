@@ -8,7 +8,8 @@ let Game = new Vue({
 		startTiles: 2,
 		tiles: [],
 		grid: [],
-		conf: gameStorage.fetch('vue2048-config')
+		conf: gameStorage.fetch('vue2048-config'),
+		strategy: 'manual'
 	},
 
 	created: function() {
@@ -115,6 +116,59 @@ let Game = new Vue({
 			for (let i = 0; i < startTiles; i++) {
 				this.addRandomTile()
 			}
+
+			if ( this.strategy === 'manual' ) {
+				window.clearTimeout(this.strategyTimeoutID)
+				this.strategyTimeoutID = null
+			}
+
+			else if ( this.strategy === 'vortex' ) {
+				const move = (direction) => {
+					this.move(direction)
+					this.strategyTimeoutID = window.setTimeout(move, 100, (direction + 1) % 4)
+				}
+				window.setTimeout(move, 0, 0)
+			}
+
+			else if ( this.strategy === 'side' ) {
+				let sequence = [3, 2, 3, 0]
+				let stuck = 0
+
+				const move = (i) => {
+					let direction = (stuck == sequence.length)
+						? 1
+						: sequence[i]
+
+					let moved = this.move(direction)
+
+					stuck = moved
+						? 0
+						: (stuck + 1)
+
+					this.strategyTimeoutID = window.setTimeout(move, 100, (i + 1) % 4)
+				}
+				window.setTimeout(move, 0, 0)
+			}
+
+			else if ( this.strategy === 'corner' ) {
+				let sequence = [3, 2]
+				let stuck = 0
+
+				const move = (i) => {
+					let direction = (i == 1 && stuck >= sequence.length)
+						? 0
+						: sequence[i]
+
+					let moved = this.move(direction)
+
+					stuck = moved
+						? 0
+						: (stuck + 1)
+
+					this.strategyTimeoutID = window.setTimeout(move, 100, (i + 1) % 2)
+				}
+				window.setTimeout(move, 0, 0)
+			}
 		},
 
 		continueGame: function(data) {
@@ -150,6 +204,16 @@ let Game = new Vue({
 		changesTilesSize: function(e) {
 			e.preventDefault()
 			this.conf.size = parseInt(e.target.value)
+
+			if(document.activeElement)
+				document.activeElement.blur()
+
+			this.init()
+		},
+
+		changesStrategy: function(e) {
+			e.preventDefault()
+			this.strategy = e.target.value
 
 			if(document.activeElement)
 				document.activeElement.blur()
@@ -350,6 +414,8 @@ let Game = new Vue({
 					}
 				}
 			}
+
+			return moved
 		},
 
 		tileMatchesAvailable: function() {
@@ -433,7 +499,7 @@ let Game = new Vue({
 			}
 
 			// The mighty 2048 tile
-			if (score === 2048)
+			if (score === 2048 && this.strategy === 'manual')
 				this.message(true)
 
 			let addition = document.createElement("div")
