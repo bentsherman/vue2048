@@ -3,7 +3,8 @@
 let Game = new Vue({
 	el: '#mainVue',
 	data: {
-		tileDimension: 124,
+		tileDimension: 121.25,
+		tilePadding: 15,
 		tilePosition: 121,
 		startTiles: 2,
 		tiles: [],
@@ -45,10 +46,10 @@ let Game = new Vue({
 		})
 
 	},
-	//Can go to templates
+
 	computed: {
-		findDimension: function() {
-			return this.grid.length * this.tileDimension
+		gridDimension: function() {
+			return this.grid.length * this.tileDimension + this.tilePadding
 		},
 
 		selected: function() {
@@ -68,7 +69,6 @@ let Game = new Vue({
 	},
 
 	components: {
-
 		tile: {
 			replace: true,
 
@@ -102,7 +102,6 @@ let Game = new Vue({
 
 
 	methods: {
-
 		init: function() {
 
 			let startTiles = this.startTiles
@@ -220,7 +219,6 @@ let Game = new Vue({
 		},
 
 		addRandomTile: function() {
-
 			if (this.availableCells().length > 0) {
 				let value = Math.random() < 0.9 ? 2 : 4,
 					randomCell = this.randomAvailableCell()
@@ -236,7 +234,6 @@ let Game = new Vue({
 		},
 
 		addTile: function(tile) {
-
 			let tiles = this.tiles,
 				len = tiles.length
 
@@ -320,7 +317,6 @@ let Game = new Vue({
 		},
 
 		findTile: function(position) {
-
 			if (position.x === -1 || position.y === -1)
 				return null
 			else {
@@ -333,7 +329,6 @@ let Game = new Vue({
 		},
 
 		moveTile: function(tile, position) {
-
 			if (tile.x === position.x && tile.y === position.y) {
 				return false
 			} else {
@@ -348,7 +343,6 @@ let Game = new Vue({
 		},
 
 		mergeTiles: function(curr, next, position) {
-
 			next.value *= 2
 			next.merged = true
 
@@ -371,7 +365,6 @@ let Game = new Vue({
 		},
 
 		move: function(direction) {
-
 			let vector = this.getVector(direction)
 			let traversals = this.buildTraversals(vector)
 			let moved = false
@@ -417,7 +410,6 @@ let Game = new Vue({
 		},
 
 		tileMatchesAvailable: function() {
-
 			let size = this.conf.size
 			let grid = this.grid
 			let tiles = this.tiles
@@ -536,15 +528,13 @@ let Game = new Vue({
 				x = w.innerWidth || e.clientWidth || g.clientWidth,
 				y = w.innerHeight || e.clientHeight || g.clientHeight
 
-			console.log(x)
-			console.log(this.conf)
-			console.log(x/this.conf.size)
-
 			if (x < 520) {
-				this.tileDimension = 69.5
+				this.tileDimension = 67.5
+				this.tilePadding = 10
 				this.tilePosition = 67
 			} else {
-				this.tileDimension = 124
+				this.tileDimension = 121.25
+				this.tilePadding = 15
 				this.tilePosition = 121
 			}
 		}
