@@ -54,7 +54,7 @@
 			</div>
 
 			<div class="tile-container" id="tile-container">
-				<div v-repeat="tiles" v-component="tile" v-style="$transform: 'translate(' + calcStyleX + 'px,' + calcStyleY + 'px)'" class="tile tile-{{value}} tile-new{{merged ? ' tile-merged' : ''}}">
+				<div v-repeat="tiles" v-component="tile" v-style="$transform: 'translate(' + calcStyleX + 'px,' + calcStyleY + 'px)'" class="tile tile-{{value <= 2048 ? value : 'super'}} tile-new {{merged ? 'tile-merged' : ''}}">
 					<div class="tile-inner">{{value}}</div>
 				</div>
 			</div>
